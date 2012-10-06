@@ -33,6 +33,12 @@
   	
   	<provider>
   		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+  		<completions>com.orangelit.orangeui.controller</completions>
+  		<complete-match capture="1">ViewController.([a-zA-Z]*)</complete-match>
+  	</provider>
+  	
+  	<provider>
+  		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
   		<completions>com.orangelit.orangeui.global</completions>
   		<complete-match capture="1">([a-zA-Z]*)</complete-match>
   	</provider>

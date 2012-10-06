@@ -9,6 +9,27 @@
       
     </set>
     
+    <set name="com.orangelit.orangeui.controller">
+      
+      <completion string="extend">
+                        
+      	<behavior>
+          <append-static>({
+  
+  /** configuration */
+  
+  getType: function() {
+    return '$1';
+  }$0
+    
+});</append-static>
+          <confirm characters="(" />
+      	</behavior>
+      	
+      </completion>
+      
+    </set>
+    
     <set name="com.orangelit.orangeui.orange">
       
       <completion string="Application" />
@@ -24,8 +45,26 @@
                         
       	<behavior>
           <append-static>(function(exports) {
-          
+  
+  /** @declarations */
+  
+  $1
+  
+  
+  /** @dependencies */
+  
+  $2
+  
+  
+  /** @definitions */
+  
+  $3
+  
+  
+  /** @exports */
+  
   $0
+  
     
 });</append-static>
           <confirm characters="(" />
