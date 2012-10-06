@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense version="1.0">
+    
+    <set name="com.orangelit.orangeui.controller">
+      
+      <behavior>
+        <append-dynamic>
+          <matched-suffix>(\s*:)|[^:]</matched-suffix>
+          <transform-into>(${1:arguments})</transform-into>
+        </append-dynamic>
+      </behavior>
+      
+      <completion string="getView">
+      
+        <behavior>
+          <append-static>\(${1:name}\)$2;</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
+      <completion string="getForm">
+      
+        <behavior>
+          <append-static>\(${1:name}\)$2;</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
+      <completion string="getElement">
+      
+        <behavior>
+          <append-static>\(${1:name}\)$2;</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
+      <completion string="on">
+      
+        <behavior>
+          <append-static>(${1:event}, ${2:callback}, ${3:context});</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
+      <completion string="once">
+      
+        <behavior>
+          <append-static>(${1:event}, ${2:callback}, ${3:context});</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
+      <completion string="_super">
+      
+      	<behavior>
+      	  <append-static>();</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="load">
+      
+      	<behavior>
+          <append-static>()$1;</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="show">
+      
+      	<behavior>
+          <append-static>()$1;</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="hide">
+      
+      	<behavior>
+          <append-static>()$1;</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="unload">
+      
+      	<behavior>
+          <append-static>()$1;</append-static>
+      	</behavior>
+      
+      </completion>
+      
+    </set>
+    
+    <set name="com.yourdomain.yoursugar.orange">
+        <completion string="carrot" />
+        <completion string="cabbage" />
+        <completion string="potato" />
+    </set>
+
+</codesense> 

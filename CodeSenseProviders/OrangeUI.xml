@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense>
+    
+    <provider>
+  		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+  		<completions>com.orangelit.orangeui.controller</completions>
+  		<complete-match capture="1">this.([a-zA-Z_]*)</complete-match>
+  	</provider>
+  	
+  	<provider>
+  		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+  		<completions>com.orangelit.orangeui.orange</completions>
+  		<complete-match capture="1">this.([a-zA-Z]*)</complete-match>
+  	</provider>
+    
+</codesense> 
