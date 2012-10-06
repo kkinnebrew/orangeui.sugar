@@ -1,7 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <codesense version="1.0">
     
-    <set name="com.orangelit.orangeui.controller">
+    <set name="com.orangelit.orangeui.global">
+      
+      <completion string="include" />
+      <completion string="exports" />
+      <completion string="app" />
+      
+    </set>
+    
+    <set name="com.orangelit.orangeui.orange">
+      
+      <completion string="Application" />
+      <completion string="Browser" />
+      <completion string="Class" />
+      <completion string="Location" />
+      <completion string="Service" />
+      <completion string="Storage" />
+      <completion string="View" />
+      <completion string="ViewController" />
+      
+      <completion string="add">
+                        
+      	<behavior>
+          <append-static>(function(exports) {
+          
+  $1
+    
+});</append-static>
+          <confirm characters="(" />
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="use">
+                              
+      	<behavior>
+          <append-static>(function(app) {
+          
+  $1
+    
+});</append-static>
+          <confirm characters="(" />
+      	</behavior>
+      
+      </completion>
+    
+    </set>
+    
+    <set name="com.orangelit.orangeui.controller.methods">
       
       <behavior>
         <append-dynamic>
@@ -149,6 +196,185 @@
       
       </completion>
       
+    </set>
+    
+    <set name="com.orangelit.orangeui.controller.functions">
+        
+      <completion string="setup">
+      
+      	<behavior>
+          <append-static>: function() {
+  $1
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+            
+      <completion string="getType">
+      
+      	<behavior>
+          <append-static>: function() {
+  return '$1';
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="getBindings">
+      
+      	<behavior>
+          <append-static>: function() {
+  return {$0};
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="getOutlets">
+      
+      	<behavior>
+          <append-static>: function() {
+  return {$1};
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="getRoutes">
+      
+      	<behavior>
+          <append-static>: function() {
+  return {$1};
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="onWillLoad">
+            
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="onDidLoad">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+            
+      <completion string="onWillAppear">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+            
+      <completion string="onDidAppear">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+            
+      <completion string="onWillDisappear">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+            
+      <completion string="onDidDisappear">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+
+      <completion string="onWillUnload">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+
+      <completion string="onDidUnload">
+                  
+      	<behavior>
+          <append-static>: function() {
+          
+  $1
+  
+  this._super();
+  
+}</append-static>
+          <confirm characters=":" />
+      	</behavior>
+      
+      </completion>
+              
     </set>
 
 </codesense> 

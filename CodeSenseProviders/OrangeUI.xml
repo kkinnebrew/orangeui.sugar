@@ -2,8 +2,14 @@
 <codesense>
     
     <provider>
+    	<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+    	<completions>com.orangelit.orangeui.controller.functions</completions>
+    	<complete-match capture="1">([a-zA-Z]*)</complete-match>
+    </provider>
+    
+    <provider>
   		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
-  		<completions>com.orangelit.orangeui.controller</completions>
+  		<completions>com.orangelit.orangeui.controller.methods</completions>
   		<complete-match capture="1">this.([a-zA-Z_]*)</complete-match>
   	</provider>
   	
@@ -16,7 +22,21 @@
   	<provider>
   		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
   		<completions>com.orangelit.orangeui.orange</completions>
-  		<complete-match capture="1">this.([a-zA-Z]*)</complete-match>
+  		<complete-match capture="1">Orange.([a-zA-Z]*)</complete-match>
   	</provider>
+  	
+  	<provider>
+  		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+  		<completions>com.orangelit.orangeui.orange</completions>
+  		<complete-match capture="1">Clementine.([a-zA-Z]*)</complete-match>
+  	</provider>
+  	
+  	<provider>
+  		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+  		<completions>com.orangelit.orangeui.global</completions>
+  		<complete-match capture="1">([a-zA-Z]*)</complete-match>
+  	</provider>
+  	
+  	
     
 </codesense> 
