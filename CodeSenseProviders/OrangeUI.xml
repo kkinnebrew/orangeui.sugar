@@ -9,6 +9,12 @@
   	
   	<provider>
   		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+  		<completions>com.orangelit.orangeui.controller.chainable</completions>
+  		<complete-match capture="1">this.(?:load|show|hide|unload)\(.*?\).([a-zA-Z]*)</complete-match>
+  	</provider>
+  	
+  	<provider>
+  		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
   		<completions>com.orangelit.orangeui.orange</completions>
   		<complete-match capture="1">this.([a-zA-Z]*)</complete-match>
   	</provider>

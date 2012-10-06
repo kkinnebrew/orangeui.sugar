@@ -55,6 +55,24 @@
       
       </completion>
       
+      <completion string="fire">
+      
+        <behavior>
+          <append-static>(${1:event}, ${2:data});</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
+      <completion string="detach">
+      
+        <behavior>
+          <append-static>(${1:event}, ${2:callback});</append-static>
+          <confirm characters="("/>
+        </behavior>
+      
+      </completion>
+      
       <completion string="_super">
       
       	<behavior>
@@ -97,10 +115,40 @@
       
     </set>
     
-    <set name="com.yourdomain.yoursugar.orange">
-        <completion string="carrot" />
-        <completion string="cabbage" />
-        <completion string="potato" />
+    <set name="com.orangelit.orangeui.controller.chainable">
+      
+      <completion string="load">
+      
+      	<behavior>
+          <append-static>()$1</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="show">
+      
+      	<behavior>
+          <append-static>()$1</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="hide">
+      
+      	<behavior>
+          <append-static>()$1</append-static>
+      	</behavior>
+      
+      </completion>
+      
+      <completion string="unload">
+      
+      	<behavior>
+          <append-static>()$1</append-static>
+      	</behavior>
+      
+      </completion>
+      
     </set>
 
 </codesense> 
