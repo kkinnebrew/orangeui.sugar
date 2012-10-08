@@ -12,7 +12,7 @@
 			
 			<!-- Orange.add('module', function(exports) { ... } -->
 			<zone>
-				<expression>\b(Orange|Clementine)(\.)(add|use|config)(\()['"]([^']*)['"](,)\s*(function)\((.*)\).*</expression>
+				<expression>\b(Orange|Clementine)(\.)(add|use|config)(\()['"]([^']*)['"](,)\s*(function)\s*\((.*)\).*</expression>
 				<capture number="0" name="orange.module.definition" />
 				<capture number="1" name="variable.property.x-assignment" />
 				<capture number="2" name="punctuation.delimiter.period" />
