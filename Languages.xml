@@ -27,11 +27,11 @@
 			<extension>js</extension>
 			<combo>
 				<extension>js</extension>
-				<match-content>Orange\.</match-content>
+				<match-content lines="8">Orange\.</match-content>
 			</combo>
 			<combo>
 				<extension>js</extension>
-				<match-content>Clementine\.</match-content>
+				<match-content lines="8">Clementine\.</match-content>
 			</combo>
 		</detectors>
 	</language>
