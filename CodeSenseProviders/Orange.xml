@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<codesense>
+	
+	<provider>
+		<selector>js, js *</selector>
+		<completions>com.orangelit.orangeui.globals</completions>
+		<complete-match capture="1">([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<provider>
+		<selector>js, js *</selector>
+		<completions>com.orangelit.orangeui.functions</completions>
+		<completions>com.orangelit.orangeui.keywords</completions>
+		<complete-match capture="2">(Clementine|Orange)\.([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<provider>
+		<selector>js, js *</selector>
+		<completions>com.orangelit.orangeui.modules</completions>
+		<complete-match capture="2">.*\s*=\s*(ViewController|Service|Model)\.([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<provider>
+		<selector>js, js *</selector>
+		<completions>com.orangelit.orangeui.controller.methods</completions>
+		<complete-match capture="1">this\.([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<provider>
+		<selector>js, js *</selector>
+		<completions>com.orangelit.orangeui.controller.functions</completions>
+		<complete-match capture="1">([a-zA-Z]*)</complete-match>
+	</provider>
+
+</codesense>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings>
+
+	<language id="espresso.default.JavaScript">
+		
+		<root-zone>language-root.js</root-zone>
+		<name>JavaScript</name>
+		<detectors>
+			<extension>js</extension>
+		</detectors>
+		
+	</language>
+	
+	<language id="espresso.default.JSON">
+		<root-zone>language-root.js.json</root-zone>
+		<name>JSON</name>
+		<detectors>
+			<extension>json</extension>
+		</detectors>
+	</language>
+	
+	<language id="espresso.default.ORANGE">
+		<root-zone>language-root.js.with-orange</root-zone>
+		<name>Orange</name>
+		<detectors>
+			<extension>js</extension>
+			<combo>
+				<extension>js</extension>
+				<match-content>Orange\.</match-content>
+			</combo>
+		</detectors>
+	</language>
+	
+</settings>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemizer>
+	
+	<!-- function myFunction (...) { ... } -->
+	<recipe name="js.function.named">
+		<start-selector>js function.definition:has-child(name:capture(name)):capture(itemizer-firstused) + brace.round.open ~ brace.round.close + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- function myFunction (...) /*some comment*/ { ... } -->
+	<recipe name="js.function.named.commented">
+		<start-selector>js function.definition:has-child(name:capture(name)):capture(itemizer-firstused) + brace.round.open ~ brace.round.close + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- variable = function(...) { ... } -->
+	<recipe name="js.function.assignment">
+		<start-selector>js function.x-assignment:has-child(name:capture(name)):capture(itemizer-firstused) + brace.round.open ~ brace.round.close + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- variable = function(...) /*comment*/ { ... } -->
+	<recipe name="js.function.assignment.commented">
+		<start-selector>js function.x-assignment:has-child(name:capture(name)):capture(itemizer-firstused) + brace.round.open ~ brace.round.close + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- "property": function(...) { ... } -->
+	<recipe name="js.function.property">
+		<start-selector>js function.x-assignment:has-child(string:has-child(name:capture(name))):capture(itemizer-firstused) + brace.round.open ~ brace.round.close + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- "property": function(...) /*comment*/ { ... } -->
+	<recipe name="js.function.property.commented">
+		<start-selector>js function.x-assignment:has-child(string:has-child(name:capture(name))):capture(itemizer-firstused) + brace.round.open ~ brace.round.close + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- function() { ... } -->
+	<recipe name="js.function.anonymous">
+		<class>ESJSAnonymousFunctionItem</class>
+		<start-selector>js function.definition.anonymous:capture(itemizer-firstused) + brace.round.open ~ brace.round.close + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- function() /*comment*/ { ... } -->
+	<recipe name="js.function.anonymous.commented">
+		<class>ESJSAnonymousFunctionItem</class>
+		<start-selector>js function.definition.anonymous:capture(itemizer-firstused) + brace.round.open ~ brace.round.close + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- switch ( ... ) { ... } -->
+	<recipe name="js.block.control.switch">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control[text='switch']:capture(itemizer-firstused) + brace.round.open:capture(open-parameters) ~ brace.round.close:capture(close-parameters) + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- switch ( ... ) /* coment */ { ... } -->
+	<recipe name="js.block.control.switch">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control[text='switch']:capture(itemizer-firstused) + brace.round.open:capture(open-parameters) ~ brace.round.close:capture(close-parameters) + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- case 'stuff': ... -->
+	<recipe name="js.block.control.case">
+		<class>ESJSChunkBlockItem</class>
+		<selector>js x-item-block.case</selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- if (...) { ... } -->
+	<recipe name="js.block.control">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control:capture(itemizer-firstused) + brace.round.open:capture(open-parameters) ~ brace.round.close:capture(close-parameters) + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- if (...) /* comment */ { ... } -->
+	<recipe name="js.block.control">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control:capture(itemizer-firstused) + brace.round.open:capture(open-parameters) ~ brace.round.close:capture(close-parameters) + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- else { ... } -->
+	<recipe name="js.block.control.generic">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control[text='else']:capture(itemizer-firstused) + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<!-- else /* comment */ { ... } -->
+	<recipe name="js.block.control.generic">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control[text='else']:capture(itemizer-firstused) + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- do { ... } while(...) -->
+	<recipe name="js.block.control.do-while">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control[text='do']:capture(itemizer-firstused) + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close + keyword.control[text='while'] + brace.round.open:capture(open-parameters) ~ brace.round.close:capture(close-parameters)</end-selector>
+	</recipe>
+	<!-- do /* comment */ { ... } while(...) -->
+	<recipe name="js.block.control.do-while">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>js keyword.control[text='do']:capture(itemizer-firstused) + comment + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close + keyword.control[text='while'] + brace.round.open:capture(open-parameters) ~ brace.round.close:capture(close-parameters)</end-selector>
+	</recipe>
+	
+	<!-- var something = { ... } -->
+	<!-- Object and array literals are somewhat specific to Javascript, so these are tied specifically to the JS syntax -->
+	<recipe name="js.literal.object">
+		<class>ESJSLiteralObjectItem</class>
+		<start-selector>js variable.x-assignment:has-child(name:capture(name)):capture(itemizer-firstused) + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<recipe name="js.literal.object.quoted">
+		<class>ESJSLiteralObjectItem</class>
+		<start-selector>js variable.x-assignment:has-child(string:has-child(name:capture(name))):capture(itemizer-firstused) + brace.curly.open</start-selector>
+		<end-selector>js brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- var something = [ ... ] -->
+	<recipe name="js.literal.array">
+		<class>ESJSLiteralArrayItem</class>
+		<start-selector>js variable.x-assignment:has-child(name:capture(name)):capture(itemizer-firstused) + brace.square.open</start-selector>
+		<end-selector>js brace.square.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<recipe name="js.literal.array.quoted">
+		<class>ESJSLiteralArrayItem</class>
+		<start-selector>js variable.x-assignment:has-child(string:has-child(name:capture(name))):capture(itemizer-firstused) + brace.square.open</start-selector>
+		<end-selector>js brace.square.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- [ ... ] -->
+	<recipe name="js.literal.array.anonymous">
+		<class>ESJSLiteralArrayItem</class>
+		<start-selector>js *:not(brace.close, variable) + brace.square.open</start-selector>
+		<end-selector>js brace.square.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- { ... } -->
+	<recipe name="js.block.anonymous">
+		<class>ESCodeBlockItem</class>
+		<start-selector>js > brace.curly.open, js *:not(x-item-block) brace.curly.open</start-selector>
+		<end-selector>js > brace.curly.close, js *:not(x-item-block) brace.curly.close</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!-- //! My Documentation Comment -->
+	<recipe name="js.comment">
+	    <class>ESCommentItem</class>
+	    <selector>js comment.documentation, js comment.bookmark, js comment.task</selector>
+	    <subrecipes>
+	    	<recipe name="js.comment.link">
+	    		<class>ESJSMarkupLink</class>
+	    		<selector>js comment markup.link</selector>
+	    	</recipe>
+	    </subrecipes>
+	</recipe>
+	
+</itemizer>

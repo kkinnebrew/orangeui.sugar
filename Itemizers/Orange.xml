@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemizer>
+	
+	<!-- Orange.add('module', function() { ... } -->
+	<recipe name="js.orange.module.processing-instruction">
+		<start-selector>js orange.module.definition:has-child(name:capture(name))</start-selector>
+		<end-selector>js brace.curly.close.orange</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!-- var Class = Class.extend({ ... }) -->
+	<recipe name="js.orange.class">
+		<class>ESCodeClassItem</class>
+		<start-selector>js class.definition:has-child(name:capture(name)):capture(itemizer-firstused)</start-selector>
+		<end-selector>js brace.curly.close.orange</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!-- /** @region ... */ -->
+	<recipe name="js.orange.region.self-closing-tag">
+		<selector>js region.orange:has-child(name:capture(name))</selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!--
+	<recipe name="js.class">
+		<class>ESCodeClassItem</class>
+		<selector>orange.class.js:has-child(name:capture(name)):capture(itemizer-firstused)</selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>-->
+
+</itemizer>

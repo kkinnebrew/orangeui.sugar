@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense version="1.0">
+	
+	<!--DOM variables-->
+	<set name="com.macrabbit.js.DOM-support.variables">
+		<completion string="document" />
+		<completion string="history" />
+		<completion string="localStorage"/>
+		<completion string="location" />
+		<completion string="screen" />
+		<completion string="window" />
+		<completion string="self" />
+		<completion string="top" />
+		<completion string="parent" />
+	</set>
+	
+	<!--DOM properties-->
+	<set name="com.macrabbit.js.DOM-support.properties">
+		<completion string="accessKey" />
+		<completion string="attributes" />
+		<completion string="childNodes" />
+		<completion string="className" />
+		<completion string="clientHeight" />
+		<completion string="clientWidth" />
+		<completion string="contentEditable" />
+		<completion string="dir" />
+		<completion string="disabled" />
+		<completion string="firstChild" />
+		<completion string="lastChild" />
+		<completion string="id" />
+		<completion string="innerHTML" />
+		<completion string="innerText" />
+		<completion string="lang" />
+		<completion string="nextSibling" />
+		<completion string="previousSibling" />
+		<completion string="nodeName" />
+		<completion string="nodeType" />
+		<completion string="nodeValue" />
+		<completion string="offsetHeight" />
+		<completion string="offsetWidth" />
+		<completion string="offsetLeft" />
+		<completion string="offsetTop" />
+		<completion string="offsetParent" />
+		<completion string="ownerDocument" />
+		<completion string="parentNode" />
+		<completion string="scrollHeight" />
+		<completion string="scrollWidth" />
+		<completion string="scrollLeft" />
+		<completion string="scrollTop" />
+		<completion string="style" />
+		<completion string="tabIndex" />
+		<completion string="tagName" />
+		<completion string="textContent"/>
+		<completion string="title" />
+	</set>
+	
+	<!--DOM methods-->
+	<set name="com.macrabbit.js.DOM-support.methods">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::(\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<completion string="addEventListener">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:eventType}, ${2:function(event\) \{$3\\}}, ${4:useCapture}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="appendChild">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:nodeObject}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="blur"/>
+		<completion string="click"/>
+		<completion string="cloneNode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:deepCopyBoolean}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="dispatchEvent">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:eventObjectReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="focus"/>
+		<completion string="getAttribute">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getAttributeNode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getAttributeNodeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:localName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getAttributeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:localName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getElementsByTagName">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:tagName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getElementsByTagNameNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:localName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="hasAttribute">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="hasAttributeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:localName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="hasChildNodes"/>
+		<completion string="insertBefore">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:newChildNode}, ${2:referenceChildNodeOrNull}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="isSupported">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:feature}, ${2:version}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="lookupNamespaceURI">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:prefix}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="lookupPrefix">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="normalize"/>
+		<completion string="removeAttribute">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="removeAttributeNode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeNodeReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="removeAttributeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:localName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="removeChild">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:childNodeReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="removeEventListener">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:eventType}, ${2:function(event\) \{$3\\}}, ${4:useCapture}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="replaceChild">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:newChildNodeReference}, ${2:oldChildNodeReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setAttribute">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeName}, ${2:value}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setAttributeNode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeObjectReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setAttributeNodeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeObjectReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setAttributeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:qualifiedName}, ${3:value}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="toString"/>
+	</set>
+	
+	<!--Event Strings-->
+	<set name="com.macrabbit.js.DOM-support.events">
+		<completion string="abort" />
+		<completion string="blur" />
+		<completion string="change" />
+		<completion string="click" />
+		<completion string="error" />
+		<completion string="focus" />
+		<completion string="load" />
+		<completion string="mousedown" />
+		<completion string="mousemove" />
+		<completion string="mouseout" />
+		<completion string="mouseover" />
+		<completion string="mouseup" />
+		<completion string="reset" />
+		<completion string="resize" />
+		<completion string="scroll" />
+		<completion string="select" />
+		<completion string="submit" />
+		<completion string="storage"/>
+		<completion string="unload" />
+	</set>
+	
+	<!--Document-->
+	
+	<set name="com.macrabbit.js.DOM-support.document.properties">
+		<completion string="anchors" />
+		<completion string="applets" />
+		<completion string="body" />
+		<completion string="cookie" />
+		<completion string="defaultView" />
+		<completion string="designMode" />
+		<completion string="documentElement" />
+		<completion string="documentURI" />
+		<completion string="doctype" />
+		<completion string="domain" />
+		<completion string="embeds" />
+		<completion string="forms" />
+		<completion string="frames" />
+		<completion string="images" />
+		<completion string="implementation" />
+		<completion string="lastModified" />
+		<completion string="links" />
+		<completion string="referrer" />
+		<completion string="styleSheets" />
+		<completion string="title" />
+		<completion string="URL" />
+	</set>
+	
+	<set name="com.macrabbit.js.DOM-support.document.methods">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::(\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<completion string="clear"/>
+		<completion string="close"/>
+		<completion string="createAttribute">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:attributeName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createAttributeNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:qualifiedName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createCDATASection">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:data}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createComment">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:commentText}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createDocumentFragment"/>
+		<completion string="createElement">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:tagName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createElementNS">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:namespaceURI}, ${2:qualifiedName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createEntityReference">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:entityName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createEvent">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:eventType}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createProcessingInstruction">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:target}, ${2:data}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createRange"/>
+		<completion string="createTextNode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:text}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="createTreeWalker">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:rootNode}, ${2:whatToShow}, ${3:filterFunction}, ${4:entityRefExpansion}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="elementFromPoint">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:x}, ${2:y}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="execCommand">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:commandName}${2:, ${3:displayUI}, ${4:value}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getElementById">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:id}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getElementsByName">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:elementName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="importNode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:nodeReference}, ${2:deepBoolean}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="open">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:${2:MIMEType}, ${3:replace}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="write">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string1}${2:, ${3:string2, ...}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="writeln">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string1}${2:, ${3:string2, ...}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<!--History-->
+	
+	<set name="com.macrabbit.js.DOM-support.history.properties">
+		<completion string="length"/>
+	</set>
+	
+	<set name="com.macrabbit.js.DOM-support.history.methods">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::(\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<completion string="back"/>
+		<completion string="forward"/>
+		<completion string="go">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:stepCountOrURL}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<!--Location-->
+	
+	<set name="com.macrabbit.js.DOM-support.location.properties">
+		<completion string="hash" />
+		<completion string="host" />
+		<completion string="hostname" />
+		<completion string="href" />
+		<completion string="pathname" />
+		<completion string="port" />
+		<completion string="protocol" />
+		<completion string="search" />
+	</set>
+	
+	<set name="com.macrabbit.js.DOM-support.location.methods">
+		<completion string="reload">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:byPassCache}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="replace">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:URL}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<!--Screen-->
+	
+	<set name="com.macrabbit.js.DOM-support.screen.properties">
+		<completion string="availHeight" />
+		<completion string="availWidth" />
+		<completion string="availLeft" />
+		<completion string="availTop" />
+		<completion string="colorDepth" />
+		<completion string="height" />
+		<completion string="width" />
+		<completion string="pixelDepth" />
+	</set>
+	
+	<!--Window-->
+	
+	<set name="com.macrabbit.js.DOM-support.window.properties">
+		<completion string="closed" />
+		<completion string="defaultStatus" />
+		<completion string="document" />
+		<completion string="frameElement" />
+		<completion string="frames" />
+		<completion string="history" />
+		<completion string="innerHeight" />
+		<completion string="innerWidth" />
+		<completion string="length" />
+		<completion string="location" />
+		<completion string="localStorage"/>
+		<completion string="name" />
+		<completion string="navigator" />
+		<completion string="opener" />
+		<completion string="outerHeight" />
+		<completion string="outerWidth" />
+		<completion string="pageXOffset" />
+		<completion string="pageYOffset" />
+		<completion string="parent" />
+		<completion string="screen" />
+		<completion string="screenLeft" />
+		<completion string="screenTop" />
+		<completion string="screenX" />
+		<completion string="screenY" />
+		<completion string="scrollX" />
+		<completion string="scrollY" />
+		<completion string="status" />
+	</set>
+	
+	<set name="com.macrabbit.js.DOM-support.window.methods.global">
+		<completion string="alert">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:message}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="clearInterval">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:intervalID}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="clearTimeout">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:timeoutID}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="confirm">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:message}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="prompt">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:message}, ${2:defaultReply}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setInterval">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:functionReference}, ${2:milliseconds}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setTimeout">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:functionReference}, ${2:milliseconds}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<set name="com.macrabbit.js.DOM-support.window.methods">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::(\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<completion string="close"/>
+		<completion string="getSelection"/>
+		<completion string="moveBy">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:deltaX}, ${2:deltaY}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="moveTo">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:x}, ${2:y}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="open">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:URL}, ${2:windowName}${3:, ${4:windowFeatures}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="print"/>
+		<completion string="resizeBy">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:deltaX}, ${2:deltaY}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="resizeTo">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:x}, ${2:y}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="scroll">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:x}, ${2:y}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="scrollBy">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:deltaX}, ${2:deltaY}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="scrollTo">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:x}, ${2:y}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<set name="com.macrabbit.js.DOM-support.localStorage.methods">
+		<completion string="key">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:index}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getItem">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:key}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setItem">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:key}, ${2:value}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="removeItem">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:key}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="clear">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+</codesense>

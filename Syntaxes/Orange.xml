@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="language-root.js.with-orange">
+	<zones>
+		<include collection="orange" />
+		<include syntax="js" />
+		<include syntax="language-root.js" />
+	</zones>
+	
+	<library>
+	
+		<collection name="orange">
+			
+			<!-- Orange.add('module', function(exports) { ... } -->
+			<zone>
+				<expression>\b(Orange|Clementine)(\.)(add|use|config)(\()['"]([^']*)['"](,)\s*(function)\((.*)\).*</expression>
+				<capture number="0" name="orange.module.definition" />
+				<capture number="1" name="variable.property.x-assignment" />
+				<capture number="2" name="punctuation.delimiter.period" />
+				<capture number="3" name="variable.property.x-assignment" />
+				<capture number="4" name="punctuation.brace.round.open" />
+				<capture number="5" name="name.string" />
+				<capture number="6" name="punctuation.delimiter.comma" />
+				<capture number="7" name="keyword.storage.type" />
+				<capture number="8" name="variable.property.x-assignment" />
+			</zone>
+			
+			<!-- var Class = Class.extend({ ... }) -->
+			<zone>
+				<expression>\b(var )?\s*([A-Z\$][A-Za-z\$_]*)\s*=\s*([A-Z\$][A-Za-z\$_]*)(\.extend)\s*\({</expression>
+				<capture number="0" name="orange.class.definition" />
+				<capture number="1" name="keyword.storage.type" />
+				<capture number="2" name="variable.property.x-assignment.name" />
+				<capture number="3" name="variable.property.x-assignment" />
+				<capture number="4" name="variable.property" />
+			</zone>
+			
+			<zone name="region.orange">
+				<expression>(\/\/\s@region)\s([A-Za-z_ ]+).*$[\n\r]*</expression>
+				<capture number="1" name="comment" />
+				<capture number="2" name="name.comment" />
+			</zone>
+			
+			<zone name="brace.curly.close.orange">
+				<expression>\}(, \[(['"][\w-_\$]['"])\])?\);</expression>
+			</zone>
+			
+			<zone name="brace.curly.open.orange">
+				<expression>\(\{</expression>
+			</zone>
+		
+		</collection>
+		
+	</library>
+	
+</syntax>

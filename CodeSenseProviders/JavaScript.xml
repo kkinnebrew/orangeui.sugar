@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense>
+
+	<!-- Keywords -->
+	<provider>
+		<!--
+			Should this be more selective?
+			
+			Or should I break the keywords down into groups and try to target them based on much narrower contexts? This seems like a little more work than payoff (and easy possibility to make assumptions based on my own coding style), but right now all of these keywords popping up everywhere is a little weird.
+		-->
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.keywords.control</completions>
+		<complete-match>(?&lt;!\.|\[|\(|,)\b[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!--else if keyword (special case because it has a space)-->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.keywords.elseif</completions>
+		<complete-match>(?&lt;!\.|\[|\(|,)\b[eE][lse if]*</complete-match>
+	</provider>
+	
+	<!-- Non-control keywords -->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.keywords</completions>
+		<complete-match>(?&lt;!\.)\b[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!-- Variables and functions -->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,variable,regex,regex *)</selector>
+		<!--DOM Keywords-->
+		<completions>com.macrabbit.js.DOM-support.variables</completions>
+		<!--Functions-->
+		<completions>com.macrabbit.js.functions</completions>
+		<!--DOM global functions-->
+		<completions>com.macrabbit.js.DOM-support.window.methods.global</completions>
+		<complete-match>(?&lt;!\.)\b[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!--Properties and Methods-->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.properties</completions>
+		<completions>com.macrabbit.js.methods</completions>
+		<!--DOM Properties and Methods-->
+		<completions>com.macrabbit.js.DOM-support.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.methods</completions>
+		<complete-match capture="1">\.([a-zA-Z][a-zA-Z ]*)</complete-match>
+	</provider>
+	
+	<!--Javascript native objects-->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.natives</completions>
+		<complete-match capture="1">\bnew\s+([a-zA-Z]*)</complete-match>
+	</provider>
+	
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.natives.static</completions>
+		<!--This lookbehind is fragile (what if they have more than one space after `new`?), but it's the only way I can prevent duplicate CodeSense in constructors-->
+		<complete-match>(?&lt;!new )\b[A-Z][a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!-- TODO: This needs to change to support some form of variable substitution in the completion ID -->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.native.Date</completions>
+		<complete-match capture="1">\bDate\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.native.Math</completions>
+		<complete-match capture="1">\bMath\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.native.Number</completions>
+		<complete-match capture="1">\bNumber\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.native.String</completions>
+		<complete-match capture="1">\bString\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.native.Node</completions>
+		<complete-match capture="1">\bNode\.(\w*)</complete-match>
+	</provider>
+	
+	<!--DOM events-->
+	<provider>
+		<selector>js function.method[text="addEventListener"] + brace.round.open + string, js function.method[text="addEventListener"] + brace.round.open + string > end, js function.method[text="removeEventListener"] + brace.round.open + string, js function.method[text="removeEventListener"] + brace.round.open + string > end</selector>
+		<completions>com.macrabbit.js.DOM-support.events</completions>
+		<complete-match>[a-zA-Z]*</complete-match>
+	</provider>
+	
+	<!--DOM built-in properties and methods-->
+	<!--TODO: this needs to change to support variable substitution-->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.document.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.document.methods</completions>
+		<complete-match capture="1">\bdocument\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.history.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.history.methods</completions>
+		<complete-match capture="1">\bhistory\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.location.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.location.methods</completions>
+		<complete-match capture="1">\blocation\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.screen.properties</completions>
+		<complete-match capture="1">\bscreen\.(\w*)</complete-match>
+	</provider>
+	
+	<!--DOM Window properties and methods-->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.window.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods.global</completions>
+		<complete-match capture="1">\bwindow\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.window.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods.global</completions>
+		<complete-match capture="1">\bopener\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.window.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods.global</completions>
+		<complete-match capture="1">\bparent\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.window.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods.global</completions>
+		<complete-match capture="1">\bself\.(\w*)</complete-match>
+	</provider>
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.window.properties</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods</completions>
+		<completions>com.macrabbit.js.DOM-support.window.methods.global</completions>
+		<complete-match capture="1">\btop\.(\w*)</complete-match>
+	</provider>
+	
+	<!--DOM localStorage methods-->
+	<provider>
+		<selector>js, js *:not(string,string *,comment,regex,regex *)</selector>
+		<completions>com.macrabbit.js.DOM-support.localStorage.methods</completions>
+		<complete-match capture="1">\blocalStorage\.(\w*)</complete-match>
+	</provider>
+</codesense>

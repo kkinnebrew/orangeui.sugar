@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense version="1.0">
+
+	<!--Language keywords-->
+
+	<set name="com.macrabbit.js.keywords.control">
+		<completion string="break">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(;)|[^;]</matched-suffix>
+					<transform-into>(?1::;)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="case">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>([^\n\r]?)|[\n\r]</matched-suffix>
+					<transform-into>(?1:: ${1:condition}:)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="catch">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+					<transform-into>(?1:: (${1:error}\) {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="continue">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(;)|[^;]</matched-suffix>
+					<transform-into>(?1::;)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="default">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(:)|[^:]</matched-suffix>
+					<transform-into>(?1:::)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="do">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\{)|\s*[^{]|[^\s{]</matched-suffix>
+					<transform-into>(?1:: {
+	$0
+} while ($1\);)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="else">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\{)|\s*[^{]|[^\s{]</matched-suffix>
+					<transform-into>(?1:: {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="finally">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\{)|\s*[^{]|[^\s{]</matched-suffix>
+					<transform-into>(?1:: {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="for">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+					<transform-into>(?1:: (${1:${2:var i = 0}; ${3:i &lt; count}; ${4:i++}}\) {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="if">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\()|(\s*\{)|\s*[^(]|[^\s(]</matched-suffix>
+					<transform-into>(?1::(?2: ($0\): ($1\) {
+	$0
+}))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="return" />
+		<completion string="switch">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+					<transform-into>(?1:: ($1\) {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="throw" />
+		<completion string="try">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\{)|\s*[^{]|[^\s{]</matched-suffix>
+					<transform-into>(?1:: {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="void" />
+		<completion string="while">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+					<transform-into>(?1:: ($1\) {
+	$0
+})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="delete" />
+		<completion string="in" />
+		<completion string="with" />
+	</set>
+	
+	<set name="com.macrabbit.js.keywords.elseif">
+		<completion string="else if">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\()|(\s*\{)|\s*[^(]|[^\s(]</matched-suffix>
+					<transform-into>(?1::(?2: ($0\): ($1\) {
+	$0
+}))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<set name="com.macrabbit.js.keywords">
+		<completion string="function">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*\(|\s+[a-zA-Z_$])|\s*[^(a-zA-Z_$]|[^\s(]</matched-suffix>
+					<transform-into>(?1:: ${1:name}($2\) {$3})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="new"/>
+		<completion string="var" />
+		
+		<completion string="instanceof" />
+		<completion string="typeof" />
+		
+		<completion string="super" />
+		<completion string="this" />
+		
+		<completion string="Infinity" />
+		<completion string="undefined" />
+		<completion string="NaN" />
+		<completion string="true" />
+		<completion string="false" />
+		<completion string="null" />
+	</set>
+	
+	<!--Natives and static class properties-->
+	
+	<set name="com.macrabbit.js.natives">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::($1\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<completion string="Array" />
+		<completion string="Boolean" />
+		<completion string="Date" />
+		<completion string="Error" />
+		<completion string="Function" />
+		<completion string="Number" />
+		<completion string="Object" />
+		<completion string="RegExp" />
+		<completion string="String" />
+		<!--DOM-->
+		<completion string="Image" />
+		<completion string="Node" />
+	</set>
+	
+	<set name="com.macrabbit.js.natives.static">
+		<completion string="Date" />
+		<completion string="Math" />
+		<completion string="Number" />
+		<completion string="String" />
+		<!--DOM-->
+		<completion string="Node" />
+	</set>
+	
+	<set name="com.macrabbit.js.native.Date">
+		<completion string="UTC">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:yyyy}, ${2:mm}, ${3:dd}${4:, ${5:hh}, ${6:mm}, ${7:ss}, ${8:ms}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<set name="com.macrabbit.js.native.Math">
+		<!--TODO: make sure the behaviors for the functions are working right-->
+		<completion string="E" />
+		<completion string="LN2" />
+		<completion string="LN10" />
+		<completion string="LOG2E" />
+		<completion string="LOG10E" />
+		<completion string="PI" />
+		<completion string="SQRT1_2" />
+		<completion string="SQRT2" />
+		<completion string="abs">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="acos">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="asin">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="atan">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="atan2">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:x}, ${2:y}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="ceil">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="cos">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="exp">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="floor">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="log">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="max">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number1}, ${2:number2}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="min">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number1}, ${2:number2}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="pow">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number1}, ${2:number2}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="random">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="round">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="sin">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="sqrt">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="tan">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:number}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<set name="com.macrabbit.js.native.Number">
+		<completion string="MAX_VALUE" />
+		<completion string="MIN_VALUE" />
+		<completion string="NEGATIVE_INFINITY" />
+		<completion string="POSITIVE_INFINITY" />
+	</set>
+	
+	<set name="com.macrabbit.js.native.String">
+		<completion string="fromCharCode">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:num1, num2 ...}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+	</set>
+	
+	<set name="com.macrabbit.js.native.Node">
+		<completion string="ELEMENT_NODE" />
+		<completion string="ATTRIBUTE_NODE" />
+		<completion string="TEXT_NODE" />
+		<completion string="CDATA_SECTION_NODE" />
+		<completion string="ENTITY_REFERENCE_NODE" />
+		<completion string="ENTITY_NODE" />
+		<completion string="PROCESSING_INSTRUCTION_NODE" />
+		<completion string="COMMENT_NODE" />
+		<completion string="DOCUMENT_NODE" />
+		<completion string="DOCUMENT_TYPE_NODE" />
+		<completion string="DOCUMENT_FRAGMENT_NODE" />
+		<completion string="NOTATION_NODE" />
+	</set>
+	
+	<!--Language functions-->
+	
+	<set name="com.macrabbit.js.functions">
+		<!--Of the following, the largest group uses strings-->
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::(${1:string}\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<completion string="decodeURI">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:encodedURI}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="decodeURIComponent">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:encodedURIComponent}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="encodeURI"/>
+		<completion string="encodeURIComponent"/>
+		<completion string="escape"/>
+		<completion string="eval"/>
+		<completion string="isFinite">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:expression}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="isNaN">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:expression}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="parseInt">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string}${2:, ${3:base}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="parseFloat"/>
+		<completion string="unescape"/>
+	</set>
+	
+	<set name="com.macrabbit.js.properties">
+		<!--common-->
+		<completion string="constructor"/>
+		<completion string="length"/>
+		<!--Error-->
+		<completion string="message"/>
+		<completion string="name"/>
+		<!--Function-->
+		<completion string="caller"/>
+		<!--RegExp-->
+		<completion string="global"/>
+		<completion string="ignoreCase"/>
+		<completion string="lastIndex"/>
+		<completion string="multiline"/>
+		<completion string="source"/>
+	</set>
+	
+	<set name="com.macrabbit.js.methods">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\()|[^(]</matched-suffix>
+				<transform-into>(?1::(\))</transform-into>
+			</append-dynamic>
+		</behavior>
+		<!--common-->
+		<completion string="toLocaleString"/>
+		<completion string="toString"/>
+		<completion string="valueOf"/>
+		<!--Array-->
+		<completion string="concat">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:array1, array2, ...}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="join">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:delimiter}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="pop"/>
+		<completion string="push">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:item1, item2, ...}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="reverse"/>
+		<completion string="shift"/>
+		<completion string="slice">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:startIndex}${2:, ${3:endIndex}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="sort">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:function(a, b\) \{$2\}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="splice">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:startIndex}, ${2:deleteCount}${3:, ${4:replacingItem1, ...}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="unshift">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:item1, item2, ...}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<!--Date-->
+		<completion string="getDate" />
+		<completion string="getDay" />
+		<completion string="getFullYear" />
+		<completion string="getHours" />
+		<completion string="getMilliseconds" />
+		<completion string="getMinutes" />
+		<completion string="getMonth" />
+		<completion string="getSeconds" />
+		<completion string="getTime" />
+		<completion string="getTimezoneOffset" />
+		<completion string="getUTCDate" />
+		<completion string="getUTCDay" />
+		<completion string="getUTCFullYear" />
+		<completion string="getUTCHours" />
+		<completion string="getUTCMilliseconds" />
+		<completion string="getUTCMinutes" />
+		<completion string="getUTCMonth" />
+		<completion string="getUTCSeconds" />
+		<completion string="getYear" />
+		<completion string="parse">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:dateString}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setDate">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:dateInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setFullYear">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:yearInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setHours">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:hoursInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setMilliseconds">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:msInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setMinutes">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:minutesInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setMonth">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:monthInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setSeconds">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:secondsInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setTime">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:msInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCDate">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:dateInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCFullYear">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:yearInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCHours">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:hoursInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCMilliseconds">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:msInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCMinutes">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:minutesInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCMonth">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:monthInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setUTCSeconds">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:secondsInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="setYear">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:yearInteger}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="toDateString" />
+		<completion string="toGMTString" />
+		<completion string="toLocaleDateString" />
+		<completion string="toLocaleTimeString" />
+		<completion string="toTimeString" />
+		<completion string="toUTCString" />
+		<!--Function-->
+		<completion string="apply">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:${2:thisOjbect}, ${3:argumentsArray}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="call">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:${2:thisObject}${3:, ${4:arg1, ...}}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<!--Number-->
+		<completion string="toExponential">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:fractionDigits}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="toFixed">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:fractionDigits}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="toPrecision">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:precisionDigits}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<!--Object-->
+		<completion string="hasOwnProperty">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:propertyName}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="getPrototypeOf">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:object}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="isPrototypeOf">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:objectReference}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<!--RegExp-->
+		<completion string="compile">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:pattern}${2:, "${3:g|i|m}"}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="exec">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="test">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<!--String-->
+		<completion string="charAt">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:positionIndex}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="charCodeAt">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:positionIndex}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="concat">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string2}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="indexOf">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:search}${2:, ${3:fromIndex}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="lastIndexOf">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:search}${2:, ${3:fromIndex}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="localeCompare">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:string2}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="match">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:regex}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="replace">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:regex}, ${2:replacement}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="search">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:regex}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="slice">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:startPositionIndex}, ${2:endPositionIndex}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="split">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:delimiter}${2:, ${3:limitInteger}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="substr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:startPositionIndex}${2:, ${3:length}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="substring">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\()|[^(]</matched-suffix>
+					<transform-into>(?1::(${1:startPositionIndex}, ${2:endPositionIndex}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		<completion string="toLocaleLowerCase" />
+		<completion string="toLocaleUpperCase" />
+		<completion string="toLowerCase" />
+		<completion string="toUpperCase" />
+	</set>
+
+</codesense>
