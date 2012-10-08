@@ -12,7 +12,7 @@
 			
 			<!-- Orange.add('module', function(exports) { ... } -->
 			<zone>
-				<expression>\b(Orange|Clementine)(\.)(add|use|config)(\()['"]([^']*)['"](,)\s*(function)\s*\((.*)\).*</expression>
+				<expression>\b(Orange|Clementine)(\.)(add)(\()['"]([^']*)['"](,)\s*(function)\s*\((.*)\).*</expression>
 				<capture number="0" name="orange.module.definition" />
 				<capture number="1" name="variable.property.x-assignment" />
 				<capture number="2" name="punctuation.delimiter.period" />
@@ -22,6 +22,38 @@
 				<capture number="6" name="punctuation.delimiter.comma" />
 				<capture number="7" name="keyword.storage.type" />
 				<capture number="8" name="variable.property.x-assignment" />
+			</zone>
+			
+			<!-- Orange.use('module', function(app) { ... } -->
+			<zone>
+				<expression>\b(Orange|Clementine)(\.)(use)(\()(.*)\s*(function)\s*\((\s*app\s*)?\)\s*(\{)</expression>
+				<capture number="0" name="orange.app.definition" />
+				<capture number="1" name="variable.property.x-assignment.name" />
+				<capture number="2" name="punctuation.delimiter.period" />
+				<capture number="3" name="variable.property.x-assignment" />
+				<capture number="4" name="punctuation.brace.round.open" />
+				<capture number="5" name="string">
+					<subzones>
+						<include syntax="language-root.js" collection="strings" />
+						<include syntax="language-root.js" collection="variables" />
+						<include syntax="language-root.js" collection="character-escapes" />
+						<include syntax="language-root.js" collection="punctuation" />
+					</subzones>
+				</capture>
+				<capture number="6" name="keyword.storage.type" />
+				<capture number="7" name="variable.property.x-assignment" />
+				<capture number="8" name="punctuation.brace.round.open" />
+			</zone>
+			
+			<!-- Orange.use('module', function(app) { ... } -->
+			<zone>
+				<expression>\b(Orange|Clementine)(\.)(config)\s*(\()({)</expression>
+				<capture number="0" name="orange.config.definition" />
+				<capture number="1" name="variable.property.x-assignment.name" />
+				<capture number="2" name="punctuation.delimiter.period" />
+				<capture number="3" name="variable.property.x-assignment" />
+				<capture number="4" name="punctuation.brace.round.open" />
+				<capture number="5" name="punctuation.brace.curly.open" />
 			</zone>
 			
 			<!-- var Class = Class.extend({ ... }) -->

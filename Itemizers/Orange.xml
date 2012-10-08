@@ -10,6 +10,24 @@
 		</subrecipes>
 	</recipe>
 	
+	<!-- Orange.use('module', function() { ... } -->
+	<recipe name="js.orange.app.processing-instruction">
+		<start-selector>js orange.app.definition:has-child(name:capture(name))</start-selector>
+		<end-selector>js brace.curly.close.orange</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!-- Orange.config({ ... }); -->
+	<recipe name="js.orange.config.processing-instruction">
+		<start-selector>js orange.config.definition:has-child(name:capture(name))</start-selector>
+		<end-selector>js brace.curly.close.orange</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
 	<!-- var Class = Class.extend({ ... }) -->
 	<recipe name="js.orange.class">
 		<class>ESCodeClassItem</class>
