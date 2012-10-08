@@ -20,6 +20,16 @@
 		</subrecipes>
 	</recipe>
 	
+	<!-- var Class = Class.extend({ ... }) -->
+	<recipe name="js.orange.iffee">
+		<class>ESCodeClassItem</class>
+		<start-selector>js iffe.definition:has-child(name:capture(name)):capture(itemizer-firstused)</start-selector>
+		<end-selector>brace.curly.close.iffe.orange</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
 	<!-- /** @region ... */ -->
 	<recipe name="js.orange.region.self-closing-tag">
 		<selector>js region.orange:has-child(name:capture(name))</selector>
