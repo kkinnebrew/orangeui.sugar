@@ -29,6 +29,10 @@
 				<extension>js</extension>
 				<match-content>Orange\.</match-content>
 			</combo>
+			<combo>
+				<extension>js</extension>
+				<match-content>Clementine\.</match-content>
+			</combo>
 		</detectors>
 	</language>
 	
